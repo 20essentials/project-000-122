@@ -1,0 +1,103 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100dvh;
+  background-color: black;
+  overflow: hidden;
+}
+
+.container {
+  height: 60px;
+  position: relative;
+
+  .line {
+    height: 20px;
+    border-bottom: 0.02vw solid #fff;
+    -webkit-box-reflect: below calc(100vh - 4.3vw);
+  }
+
+  .light-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+
+    .light {
+      width: 4vw;
+      height: 6vw;
+      border-radius: 50%;
+      position: relative;
+      top: .8vw;
+      animation: superlight 2s linear infinite both;
+      -webkit-box-reflect: below calc(100vh - 17vw);
+
+
+      &::after {
+        content: '';
+        display: block;
+        width: 1vw;
+        height: .9vw;
+        background-color: gray;
+        box-shadow: inset 0 0 8px #0008;
+        position: absolute;
+        border-radius: 1px;
+        left: 1.5vw;
+        top: -.8vw;
+      }
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -3.1vw;
+        left: 0;
+        width: 8vw;
+        height: 4vw;
+        left: 50%;
+        border-bottom: .15vw solid #fff8;
+        border-radius: 50%;
+        z-index: -1;
+      }
+    }
+
+    .light:nth-child(3n + 1) {
+      color: #f0f;
+      animation-delay: 0;
+    }
+
+    .light:nth-child(3n + 2) {
+      color: #0ff;
+
+      animation-delay: 0.8s;
+    }
+
+    .light:nth-child(3n + 3) {
+      color: #0f0;
+      animation-delay: 1.2s;
+    }
+
+    .light:last-child:before {
+      border-color: transparent;
+    }
+  }
+}
+
+@keyframes superlight {
+  0% {
+    background-color: color-mix(in srgb, currentColor, transparent 60%);
+  }
+
+  50% {
+    background-color: color-mix(in srgb, currentColor, transparent 10%);
+    box-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+  }
+
+  100% {
+    background-color: color-mix(in srgb, currentColor, transparent 10%);
+  }
+}
